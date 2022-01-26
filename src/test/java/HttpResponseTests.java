@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
+import server.ContentEncoding;
 import server.HttpResponse;
 import server.StatusCode;
 
@@ -67,27 +68,51 @@ public class HttpResponseTests {
         int defaultMax = 999;
         response.addKeepAlive();
         response.sendToSoketStream(outputStream);
-        
+
+        String expected = new StringBuilder(header)
+                .append("Connection: Keep-Alive\n")
+                .append("Keep-Alive: timeout=").append(defaultTimeout)
+                .append(", max=").append(defaultMax).append("\n\n")
+                .toString();
+        String actual = outputStream.toString();
+
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void shouldCorrectlyAddKeepAlive() {
+        int timeout = 10;
+        int max = 10000;
+        response.addKeepAlive(timeout, max);
+        response.sendToSoketStream(outputStream);
 
+        String expected = new StringBuilder(header)
+                .append("Connection: Keep-Alive\n")
+                .append("Keep-Alive: timeout=").append(timeout)
+                .append(", max=").append(max).append("\n\n")
+                .toString();
+        String actual = outputStream.toString();
+
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void shouldCorrectlyAddHttpFile() {
+        response.addHttpFile("/test.html", ContentEncoding.NONE);
+        response.sendToSoketStream(outputStream);
 
-    }
+        String expected = new StringBuilder(header)
+                .append("Content-Type: text/html; charset=utf-8\n\n")
+                .append("test")
+                .toString();
+        String actual = outputStream.toString();
 
-    @Test
-    public void shouldCorrectlyAddFavicon() {
-
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void shouldCorrectlyAddFile() {
-
+        //
     }
 
 }

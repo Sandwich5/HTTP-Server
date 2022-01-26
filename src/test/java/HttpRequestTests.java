@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import static org.mockito.Mockito.*;
-
 import org.junit.jupiter.params.provider.ValueSource;
 import server.HttpRequest;
 import server.RequestType;
@@ -14,6 +12,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.mockito.Mockito.*;
 
 public class HttpRequestTests {
 

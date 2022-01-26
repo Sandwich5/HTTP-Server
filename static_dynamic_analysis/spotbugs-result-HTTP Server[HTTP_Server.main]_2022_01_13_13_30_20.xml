@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.4.2" sequence="0" timestamp="1642073325167" analysisTimestamp="1642073322374" release="">
+  <Project projectName="HTTP Server[HTTP_Server.main]">
+    <Jar>C:\Users\sandwich5\IdeaProjects\HTTP Server\build\classes\java\main\server\ContentEncoding.class</Jar>
+    <Jar>C:\Users\sandwich5\IdeaProjects\HTTP Server\build\classes\java\main\server\HttpRequest.class</Jar>
+    <Jar>C:\Users\sandwich5\IdeaProjects\HTTP Server\build\classes\java\main\server\HttpResponse.class</Jar>
+    <Jar>C:\Users\sandwich5\IdeaProjects\HTTP Server\build\classes\java\main\server\HttpServer.class</Jar>
+    <Jar>C:\Users\sandwich5\IdeaProjects\HTTP Server\build\classes\java\main\server\RequestType.class</Jar>
+    <Jar>C:\Users\sandwich5\IdeaProjects\HTTP Server\build\classes\java\main\server\StatusCode.class</Jar>
+    <AuxClasspathEntry>C:/Users/sandwich5/IdeaProjects/HTTP Server/build/classes/java/main</AuxClasspathEntry>
+    <SrcDir>C:/Users/sandwich5/IdeaProjects/HTTP Server/src/main/java</SrcDir>
+    <SrcDir>C:/Users/sandwich5/IdeaProjects/HTTP Server/src/main/resources</SrcDir>
+  </Project>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" rank="18" abbrev="EI" category="MALICIOUS_CODE" instanceHash="529fcc7ea40cced5de3b1d4335d34caa" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="374">
+    <ShortMessage>May expose internal representation by returning reference to mutable object</ShortMessage>
+    <LongMessage>server.HttpRequest.getHeaderLines() may expose internal representation by returning HttpRequest.headerLines</LongMessage>
+    <Class classname="server.HttpRequest" primary="true">
+      <SourceLine classname="server.HttpRequest" sourcefile="HttpRequest.java" sourcepath="server/HttpRequest.java" relSourcepath="java\server\HttpRequest.java">
+        <Message>In HttpRequest.java</Message>
+      </SourceLine>
+      <Message>In class server.HttpRequest</Message>
+    </Class>
+    <Method classname="server.HttpRequest" name="getHeaderLines" signature="()Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="server.HttpRequest" start="72" end="72" startBytecode="0" endBytecode="46" sourcefile="HttpRequest.java" sourcepath="server/HttpRequest.java" relSourcepath="java\server\HttpRequest.java"/>
+      <Message>In method server.HttpRequest.getHeaderLines()</Message>
+    </Method>
+    <Field classname="server.HttpRequest" name="headerLines" signature="Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="server.HttpRequest" sourcefile="HttpRequest.java" sourcepath="server/HttpRequest.java" relSourcepath="java\server\HttpRequest.java">
+        <Message>In HttpRequest.java</Message>
+      </SourceLine>
+      <Message>Field server.HttpRequest.headerLines</Message>
+    </Field>
+    <SourceLine classname="server.HttpRequest" primary="true" start="72" end="72" startBytecode="4" endBytecode="4" sourcefile="HttpRequest.java" sourcepath="server/HttpRequest.java" relSourcepath="java\server\HttpRequest.java">
+      <Message>At HttpRequest.java:[line 72]</Message>
+    </SourceLine>
+    <SourceLine classname="server.HttpRequest" primary="true" start="72" end="72" startBytecode="4" endBytecode="4" sourcefile="HttpRequest.java" sourcepath="server/HttpRequest.java" relSourcepath="java\server\HttpRequest.java">
+      <Message>At HttpRequest.java:[line 72]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="NP_DEREFERENCE_OF_READLINE_VALUE" priority="2" rank="15" abbrev="NP" category="STYLE" instanceHash="b6793f06acca803e8fbaf13636a063f5" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="476">
+    <ShortMessage>Dereference of the result of readLine() without nullcheck</ShortMessage>
+    <LongMessage>Dereference of the result of readLine() without nullcheck in server.HttpRequest.readFromSoketStream(BufferedReader)</LongMessage>
+    <Class classname="server.HttpRequest" primary="true">
+      <SourceLine classname="server.HttpRequest" sourcefile="HttpRequest.java" sourcepath="server/HttpRequest.java" relSourcepath="java\server\HttpRequest.java">
+        <Message>In HttpRequest.java</Message>
+      </SourceLine>
+      <Message>In class server.HttpRequest</Message>
+    </Class>
+    <Method classname="server.HttpRequest" name="readFromSoketStream" signature="(Ljava/io/BufferedReader;)V" isStatic="false" primary="true">
+      <SourceLine classname="server.HttpRequest" start="29" end="47" startBytecode="0" endBytecode="315" sourcefile="HttpRequest.java" sourcepath="server/HttpRequest.java" relSourcepath="java\server\HttpRequest.java"/>
+      <Message>In method server.HttpRequest.readFromSoketStream(BufferedReader)</Message>
+    </Method>
+    <LocalVariable name="requestLine" register="3" pc="6" role="LOCAL_VARIABLE_VALUE_OF">
+      <Message>Value loaded from requestLine</Message>
+    </LocalVariable>
+    <SourceLine classname="server.HttpRequest" primary="true" start="30" end="30" startBytecode="7" endBytecode="7" sourcefile="HttpRequest.java" sourcepath="server/HttpRequest.java" relSourcepath="java\server\HttpRequest.java">
+      <Message>At HttpRequest.java:[line 30]</Message>
+    </SourceLine>
+    <SourceLine classname="server.HttpRequest" primary="true" start="30" end="30" startBytecode="7" endBytecode="7" sourcefile="HttpRequest.java" sourcepath="server/HttpRequest.java" relSourcepath="java\server\HttpRequest.java">
+      <Message>At HttpRequest.java:[line 30]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" instanceHash="fc091eb5fdfd159dde2654cc1d94c95e" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Reliance on default encoding</ShortMessage>
+    <LongMessage>Found reliance on default encoding in server.HttpResponse.sendToSoketStream(OutputStream): String.getBytes()</LongMessage>
+    <Class classname="server.HttpResponse" primary="true">
+      <SourceLine classname="server.HttpResponse" sourcefile="HttpResponse.java" sourcepath="server/HttpResponse.java" relSourcepath="java\server\HttpResponse.java">
+        <Message>In HttpResponse.java</Message>
+      </SourceLine>
+      <Message>In class server.HttpResponse</Message>
+    </Class>
+    <Method classname="server.HttpResponse" name="sendToSoketStream" signature="(Ljava/io/OutputStream;)V" isStatic="false" primary="true">
+      <SourceLine classname="server.HttpResponse" start="87" end="103" startBytecode="0" endBytecode="314" sourcefile="HttpResponse.java" sourcepath="server/HttpResponse.java" relSourcepath="java\server\HttpResponse.java"/>
+      <Message>In method server.HttpResponse.sendToSoketStream(OutputStream)</Message>
+    </Method>
+    <Method classname="java.lang.String" name="getBytes" signature="()[B" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.lang.String" start="981" end="981" startBytecode="0" endBytecode="53" sourcefile="String.java" sourcepath="java/lang/String.java"/>
+      <Message>Called method String.getBytes()</Message>
+    </Method>
+    <SourceLine classname="server.HttpResponse" primary="true" start="90" end="90" startBytecode="45" endBytecode="45" sourcefile="HttpResponse.java" sourcepath="server/HttpResponse.java" relSourcepath="java\server\HttpResponse.java">
+      <Message>At HttpResponse.java:[line 90]</Message>
+    </SourceLine>
+    <SourceLine classname="server.HttpResponse" primary="true" start="90" end="90" startBytecode="45" endBytecode="45" sourcefile="HttpResponse.java" sourcepath="server/HttpResponse.java" relSourcepath="java\server\HttpResponse.java">
+      <Message>At HttpResponse.java:[line 90]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" instanceHash="a4e8edf6f571ac6ae7223f633592b54e" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Reliance on default encoding</ShortMessage>
+    <LongMessage>Found reliance on default encoding in server.HttpServer.run(): new java.io.InputStreamReader(InputStream)</LongMessage>
+    <Class classname="server.HttpServer" primary="true">
+      <SourceLine classname="server.HttpServer" sourcefile="HttpServer.java" sourcepath="server/HttpServer.java" relSourcepath="java\server\HttpServer.java">
+        <Message>In HttpServer.java</Message>
+      </SourceLine>
+      <Message>In class server.HttpServer</Message>
+    </Class>
+    <Method classname="server.HttpServer" name="run" signature="()V" isStatic="false" primary="true">
+      <SourceLine classname="server.HttpServer" start="47" end="85" startBytecode="0" endBytecode="491" sourcefile="HttpServer.java" sourcepath="server/HttpServer.java" relSourcepath="java\server\HttpServer.java"/>
+      <Message>In method server.HttpServer.run()</Message>
+    </Method>
+    <Method classname="java.io.InputStreamReader" name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.InputStreamReader" start="72" end="79" startBytecode="0" endBytecode="146" sourcefile="InputStreamReader.java" sourcepath="java/io/InputStreamReader.java"/>
+      <Message>Called method new java.io.InputStreamReader(InputStream)</Message>
+    </Method>
+    <SourceLine classname="server.HttpServer" primary="true" start="53" end="53" startBytecode="33" endBytecode="33" sourcefile="HttpServer.java" sourcepath="server/HttpServer.java" relSourcepath="java\server\HttpServer.java">
+      <Message>At HttpServer.java:[line 53]</Message>
+    </SourceLine>
+    <SourceLine classname="server.HttpServer" primary="true" start="53" end="53" startBytecode="33" endBytecode="33" sourcefile="HttpServer.java" sourcepath="server/HttpServer.java" relSourcepath="java\server\HttpServer.java">
+      <Message>At HttpServer.java:[line 53]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_EXIT" priority="2" rank="16" abbrev="Dm" category="BAD_PRACTICE" instanceHash="c975fd388d0a7e5961f8d5ad54c775ab" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="382">
+    <ShortMessage>Method invokes System.exit(...)</ShortMessage>
+    <LongMessage>server.HttpServer.run() invokes System.exit(...), which shuts down the entire virtual machine</LongMessage>
+    <Class classname="server.HttpServer" primary="true">
+      <SourceLine classname="server.HttpServer" sourcefile="HttpServer.java" sourcepath="server/HttpServer.java" relSourcepath="java\server\HttpServer.java">
+        <Message>In HttpServer.java</Message>
+      </SourceLine>
+      <Message>In class server.HttpServer</Message>
+    </Class>
+    <Method classname="server.HttpServer" name="run" signature="()V" isStatic="false" primary="true">
+      <SourceLine classname="server.HttpServer" start="47" end="85" startBytecode="0" endBytecode="491" sourcefile="HttpServer.java" sourcepath="server/HttpServer.java" relSourcepath="java\server\HttpServer.java"/>
+      <Message>In method server.HttpServer.run()</Message>
+    </Method>
+    <SourceLine classname="server.HttpServer" primary="true" start="57" end="57" startBytecode="56" endBytecode="56" sourcefile="HttpServer.java" sourcepath="server/HttpServer.java" relSourcepath="java\server\HttpServer.java">
+      <Message>At HttpServer.java:[line 57]</Message>
+    </SourceLine>
+    <SourceLine classname="server.HttpServer" primary="true" start="57" end="57" startBytecode="56" endBytecode="56" sourcefile="HttpServer.java" sourcepath="server/HttpServer.java" relSourcepath="java\server\HttpServer.java">
+      <Message>At HttpServer.java:[line 57]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="BAD_PRACTICE">
+    <Description>Bad practice</Description>
+  </BugCategory>
+  <BugCategory category="MALICIOUS_CODE">
+    <Description>Malicious code vulnerability</Description>
+  </BugCategory>
+  <BugCategory category="STYLE">
+    <Description>Dodgy code</Description>
+  </BugCategory>
+  <BugCategory category="I18N">
+    <Description>Internationalization</Description>
+  </BugCategory>
+  <BugPattern type="EI_EXPOSE_REP" abbrev="EI" category="MALICIOUS_CODE" cweid="374">
+    <ShortDescription>May expose internal representation by returning reference to mutable object</ShortDescription>
+    <Details><![CDATA[
+
+  <p> Returning a reference to a mutable object value stored in one of the object's fields
+  exposes the internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Returning a new copy of the object is better approach in many situations.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="NP_DEREFERENCE_OF_READLINE_VALUE" abbrev="NP" category="STYLE">
+    <ShortDescription>Dereference of the result of readLine() without nullcheck</ShortDescription>
+    <Details><![CDATA[
+
+  <p> The result of invoking readLine() is dereferenced without checking to see if the result is null. If there are no more lines of text
+to read, readLine() will return null and dereferencing that will generate a null pointer exception.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="DM_DEFAULT_ENCODING" abbrev="Dm" category="I18N">
+    <ShortDescription>Reliance on default encoding</ShortDescription>
+    <Details><![CDATA[
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      ]]></Details>
+  </BugPattern>
+  <BugPattern type="DM_EXIT" abbrev="Dm" category="BAD_PRACTICE" cweid="382">
+    <ShortDescription>Method invokes System.exit(...)</ShortDescription>
+    <Details><![CDATA[
+
+  <p> Invoking System.exit shuts down the entire Java virtual machine. This
+   should only been done when it is appropriate. Such calls make it
+   hard or impossible for your code to be invoked by other code.
+   Consider throwing a RuntimeException instead.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="NP" cweid="476">
+    <Description>Null pointer dereference</Description>
+  </BugCode>
+  <BugCode abbrev="EI">
+    <Description>Method returning array may expose internal representation</Description>
+  </BugCode>
+  <BugCode abbrev="Dm">
+    <Description>Dubious method used</Description>
+  </BugCode>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Thu, 13 Jan 2022 13:28:38 +0200" total_classes="6" referenced_classes="78" total_bugs="5" total_size="223" num_packages="1" java_version="11.0.7" vm_version="11.0.7+10-b765.53" cpu_seconds="44.14" clock_seconds="98.45" peak_mbytes="1019.93" alloc_mbytes="976.38" gc_seconds="0.12" priority_2="3" priority_1="2">
+    <FileStats path="server/ContentEncoding.java" bugCount="0" size="11"/>
+    <FileStats path="server/HttpRequest.java" bugCount="2" size="45" bugHash="afd59d79e4e305d1cd0d9875684f3dd2"/>
+    <FileStats path="server/HttpResponse.java" bugCount="1" size="61" bugHash="82abffdb0c88882541791316b7986d84"/>
+    <FileStats path="server/HttpServer.java" bugCount="2" size="57" bugHash="1862dd7ea693611203613ed7644a74a8"/>
+    <FileStats path="server/RequestType.java" bugCount="0" size="22"/>
+    <FileStats path="server/StatusCode.java" bugCount="0" size="27"/>
+    <PackageStats package="server" total_bugs="5" total_types="6" total_size="223" priority_2="3" priority_1="2">
+      <ClassStats class="server.ContentEncoding" sourceFile="ContentEncoding.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="server.HttpRequest" sourceFile="HttpRequest.java" interface="false" size="45" bugs="2" priority_2="2"/>
+      <ClassStats class="server.HttpResponse" sourceFile="HttpResponse.java" interface="false" size="61" bugs="1" priority_1="1"/>
+      <ClassStats class="server.HttpServer" sourceFile="HttpServer.java" interface="false" size="57" bugs="2" priority_2="1" priority_1="1"/>
+      <ClassStats class="server.RequestType" sourceFile="RequestType.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="server.StatusCode" sourceFile="StatusCode.java" interface="false" size="27" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.FindBugs2" totalMilliseconds="545" invocations="2" avgMicrosecondsPerInvocation="272972" maxMicrosecondsPerInvocation="328921" standardDeviationMicrosecondsPerInvocation="55950"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="469" invocations="614" avgMicrosecondsPerInvocation="764" maxMicrosecondsPerInvocation="18209" standardDeviationMicrosecondsPerInvocation="1659"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="410" invocations="619" avgMicrosecondsPerInvocation="663" maxMicrosecondsPerInvocation="63894" standardDeviationMicrosecondsPerInvocation="2988"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="126" invocations="78" avgMicrosecondsPerInvocation="1617" maxMicrosecondsPerInvocation="25052" standardDeviationMicrosecondsPerInvocation="3416"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="91" invocations="78" avgMicrosecondsPerInvocation="1168" maxMicrosecondsPerInvocation="6690" standardDeviationMicrosecondsPerInvocation="1597"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="73" invocations="208" avgMicrosecondsPerInvocation="352" maxMicrosecondsPerInvocation="4351" standardDeviationMicrosecondsPerInvocation="500"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="58" invocations="121" avgMicrosecondsPerInvocation="481" maxMicrosecondsPerInvocation="24943" standardDeviationMicrosecondsPerInvocation="2386"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="53" invocations="40" avgMicrosecondsPerInvocation="1334" maxMicrosecondsPerInvocation="12016" standardDeviationMicrosecondsPerInvocation="2151"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="51" invocations="40" avgMicrosecondsPerInvocation="1297" maxMicrosecondsPerInvocation="13362" standardDeviationMicrosecondsPerInvocation="2232"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="46" invocations="78" avgMicrosecondsPerInvocation="596" maxMicrosecondsPerInvocation="9949" standardDeviationMicrosecondsPerInvocation="1260"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="46" invocations="35" avgMicrosecondsPerInvocation="1318" maxMicrosecondsPerInvocation="12672" standardDeviationMicrosecondsPerInvocation="2192"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="45" invocations="35" avgMicrosecondsPerInvocation="1310" maxMicrosecondsPerInvocation="12253" standardDeviationMicrosecondsPerInvocation="2140"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="44" invocations="35" avgMicrosecondsPerInvocation="1274" maxMicrosecondsPerInvocation="18652" standardDeviationMicrosecondsPerInvocation="3087"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="36" invocations="575" avgMicrosecondsPerInvocation="64" maxMicrosecondsPerInvocation="1508" standardDeviationMicrosecondsPerInvocation="115"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

@@ -64,7 +64,7 @@ public class HttpResponse {
         return this;
     }
 
-    private void addFile(File file, ContentEncoding enc) {
+    protected void addFile(File file, ContentEncoding enc) {
         try {
             BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file));
             if (enc == ContentEncoding.NONE)
@@ -91,8 +91,10 @@ public class HttpResponse {
             // send message body
             if (inputStream != null) {
                 byte[] b = new byte[255];
-                while (inputStream.read(b) > 0) {
-                    out.write(b);
+                int read = inputStream.read(b);
+                while (read > 0) {
+                    out.write(b, 0, read);
+                    read = inputStream.read(b);
                 }
             }
         } catch (IOException ex) {
